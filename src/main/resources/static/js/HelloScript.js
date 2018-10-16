@@ -2,7 +2,7 @@ $(document).ready(function () {
    console.log("Hello from a js script!");
 
 
-    console.log("Merge me to master!");
+    console.log("This is a pretended new feature.");
 
 
     $("#pressMeBtn").on("click", function () {
