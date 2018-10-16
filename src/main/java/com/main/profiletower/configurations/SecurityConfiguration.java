@@ -60,8 +60,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/account/**").permitAll()
                 .antMatchers("/login/**").permitAll()
-                .antMatchers("/home/**").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()//TODO:Check if this is working as it should
+                .antMatchers("/home/**").hasAuthority("REGULAR")
+                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/account/login")
                 .failureUrl("/account/login?error=true")
@@ -71,8 +71,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
-                .accessDeniedPage("/access-denied");
+                .accessDeniedPage("/account/accessDenied");
     }
+
+
 
 
 
