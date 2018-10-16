@@ -2,7 +2,7 @@ $(document).ready(function () {
    console.log("Hello from a js script!");
 
 
-    console.log("test a branch!");
+    console.log("This is a test!!!");
 
 
     $("#pressMeBtn").on("click", function () {
