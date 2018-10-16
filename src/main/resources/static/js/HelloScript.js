@@ -1,12 +1,8 @@
 $(document).ready(function () {
    console.log("Hello from a js script!");
-   console.log("I want to say goodbye!");
 
 
-
-
-
-
+    console.log("test a branch!");
 
 
     $("#pressMeBtn").on("click", function () {
