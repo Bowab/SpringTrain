@@ -4,6 +4,12 @@ $(document).ready(function () {
    //This time with a comment.
    console.log("Another merge test with comment");
 
+   /*
+
+   adding a comment in this block!
+
+    */
+
     $("#pressMeBtn").on("click", function () {
         console.log("Hello Im btn!");
     });
