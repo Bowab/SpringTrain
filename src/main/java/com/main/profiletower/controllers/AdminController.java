@@ -14,7 +14,7 @@ public class AdminController {
     @RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
     public ModelAndView index(){
 
-        ModelAndView mw = new ModelAndView("adminIndex");
+        ModelAndView mw = new ModelAndView("admin/adminIndex");
 
         return mw;
     }

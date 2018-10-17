@@ -11,13 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/home")
 public class HomeController {
 
-    @RequestMapping(value = "/testindex", method = RequestMethod.GET)
-    public ModelAndView testindex()
-    {
-        ModelAndView mw = new ModelAndView("testindex");
-        return mw;
-    }
-
 
     @Autowired
     private MessageService messageService;
@@ -25,24 +18,11 @@ public class HomeController {
     @RequestMapping(value = "/viewInbox", method = RequestMethod.GET)
     public ModelAndView viewInbox(){
 
-        ModelAndView mw = new ModelAndView("viewInbox");
+        ModelAndView mw = new ModelAndView("home/viewInbox");
         mw.addObject("messageList", messageService.findUsersMessages()); //Fix later to use a service
         return mw;
     }
 
 
-    @RequestMapping(value = "/myTesting", method = RequestMethod.GET)
-    public ModelAndView myTesting()
-    {
-        ModelAndView mw = new ModelAndView("myTesting");
-        return mw;
-    }
 
-    //TODO: Get this working, find out how to server a nested folder
-    @RequestMapping(value = "/secondTest", method = RequestMethod.GET)
-    public ModelAndView secondTest()
-    {
-        ModelAndView mw = new ModelAndView("secondTest");
-        return mw;
-    }
 }
