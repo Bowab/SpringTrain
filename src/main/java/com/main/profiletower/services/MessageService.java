@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public interface MessageService {
-    public List<Message> findUsersMessages();
+    public List<Message> findUsersMessages(long userId);
     public Inbox findInboxByUserId(long userId);
     public List<InboxRow> findInboxRows(long userId);
     public List<Message> findCorrectMessages(List<InboxRow> ibrList);

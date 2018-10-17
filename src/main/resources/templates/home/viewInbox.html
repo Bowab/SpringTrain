@@ -11,26 +11,26 @@
 </head>
 <body>
 
-    <h1>List all inbox messages for a certain user here:</h1>
+<h1>List all inbox messages for a certain user here:</h1>
 
 
-    <table border="1" style="width:300px">
-        <tr>
-            <td>Subject</td>
-            <td>Text</td>
-            <td>Sent on:</td>
-        </tr>
-        <tr th:each="messageList : ${messageList}">
-            <th
-                    th:text="${messageList.subject}">
-            </th>
-<th
-        th:text="${messageList.text}">
-</th>
-<th
-        th:text="${messageList.sendDate}">
-</th>
-</tr>
+<table border="1" style="width:300px">
+    <tr>
+        <td>Subject</td>
+        <td>Text</td>
+        <td>Sent on:</td>
+    </tr>
+    <tr th:each="messageList : ${messageList}">
+        <th
+                th:text="${messageList.subject}">
+        </th>
+        <th
+                th:text="${messageList.text}">
+        </th>
+        <th
+                th:text="${messageList.sendDate}">
+        </th>
+    </tr>
 </table>
 
 <h1>Hello im in inbox!</h1>
