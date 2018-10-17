@@ -21,4 +21,24 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
 
+
+    /*
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources");
+    }
+    */
+
+
+    /*
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/testHomeIndex").setViewName("forward:/home/testHomeIndex");
+    }
+    */
+
+
 }
+
+
+

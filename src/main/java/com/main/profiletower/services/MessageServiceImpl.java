@@ -31,9 +31,11 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<Message> findUsersMessages() {
 
+        //TODO: Add a real id and not a hardcoded one.
+
         //1. Find the right inbox
        Inbox thisInbox = findInboxByUserId(2);
-       //TODO: Add a real id and not a hardcoded one.
+
 
        //2. Find all inbox_rows associated with that inbox
         List<InboxRow> inboxRowList = findInboxRows(thisInbox.getId());

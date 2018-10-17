@@ -31,4 +31,18 @@ public class HomeController {
     }
 
 
+    @RequestMapping(value = "/myTesting", method = RequestMethod.GET)
+    public ModelAndView myTesting()
+    {
+        ModelAndView mw = new ModelAndView("myTesting");
+        return mw;
+    }
+
+    //TODO: Get this working, find out how to server a nested folder
+    @RequestMapping(value = "/secondTest", method = RequestMethod.GET)
+    public ModelAndView secondTest()
+    {
+        ModelAndView mw = new ModelAndView("secondTest");
+        return mw;
+    }
 }
