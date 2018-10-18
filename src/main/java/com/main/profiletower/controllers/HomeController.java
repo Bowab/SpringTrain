@@ -1,7 +1,9 @@
 package com.main.profiletower.controllers;
 
+import com.main.profiletower.models.Image;
 import com.main.profiletower.models.User;
 import com.main.profiletower.repository.UserRepository;
+import com.main.profiletower.services.ImageService;
 import com.main.profiletower.services.MessageService;
 import com.main.profiletower.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
-
+import java.io.File;
 import java.security.Principal;
 
 @Controller
@@ -28,6 +30,9 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ImageService imageService;
 
     @RequestMapping(value = "/viewInbox", method = RequestMethod.GET)
     public ModelAndView viewInbox(){
@@ -66,11 +71,34 @@ public class HomeController {
     public ModelAndView userIdDisplayAgain(){
 
         //TODO: Experiment here with getting logged in user id.
+
+        Image image = new Image();
+        image = imageService.findUserByFileNameServer("serverfilename");
+        String x = image.getFileNameServer();
+
         ModelAndView mw = new ModelAndView("home/userIdDisplayAgain");
-        mw.addObject("userId", "ads");
+        mw.addObject("userId", x);
         return mw;
 
     }
+
+
+    //TODO: Upload image, fix file streams and connect it with database.
+    @RequestMapping(value = "/uploadImage", method = RequestMethod.GET)
+    public  ModelAndView uploadImage(){
+        ModelAndView mw = new ModelAndView("home/uploadImage");
+        return mw;
+    }
+
+    @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
+    public  ModelAndView uploadImage(File file){
+        ModelAndView mw = new ModelAndView("home/uploadImage");
+        mw.addObject("filename", file.getName());
+        return mw;
+    }
+
+
+
 
 
 
