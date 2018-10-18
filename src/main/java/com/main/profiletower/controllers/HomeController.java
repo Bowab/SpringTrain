@@ -3,8 +3,9 @@ package com.main.profiletower.controllers;
 import com.main.profiletower.models.User;
 import com.main.profiletower.repository.UserRepository;
 import com.main.profiletower.services.MessageService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import com.main.profiletower.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 import java.security.Principal;
 
@@ -22,6 +25,9 @@ public class HomeController {
 
     @Autowired
     private MessageService messageService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/viewInbox", method = RequestMethod.GET)
     public ModelAndView viewInbox(){
@@ -35,40 +41,35 @@ public class HomeController {
     @RequestMapping(value = "/userIdDisplay", method = RequestMethod.GET)
     public ModelAndView userIdDisplay(){
 
-        //TODO: Get user id from spring security.
 
-        /*
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        String x = securityContext.getAuthentication().getName();
+        //TODO: Working, is there a better way?
 
+        //Get logged in username.
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        //Find logged in user in database by username.
         User user = new User();
+        user = userService.findUserByUsername(username);
 
-        long userId = user.getId();
-        */
-
-        //SecurityContext securityContext = SecurityContextHolder.getContext();
-        //Authentication authentication = securityContext.getAuthentication();
-
-        /*
-        User user = (User) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
-
-        String name = user.getUsername();
-        */
-
+        //Get that user id.
+        Long userId = user.getId();
 
         ModelAndView mw = new ModelAndView("home/userIdDisplay");
-        mw.addObject("userId", 100);
+        mw.addObject("userId", userId);
         return mw;
 
     }
 
 
-    //TODO: This is working, remove when you solved how to get id.
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserName(Principal principal) {
-        return principal.getName();
+    @RequestMapping(value = "/userIdDisplayAgain", method = RequestMethod.GET)
+    public ModelAndView userIdDisplayAgain(){
+
+        //TODO: Experiment here with getting logged in user id.
+        ModelAndView mw = new ModelAndView("home/userIdDisplayAgain");
+        mw.addObject("userId", "ads");
+        return mw;
+
     }
 
 

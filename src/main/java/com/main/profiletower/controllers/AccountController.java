@@ -25,6 +25,7 @@ public class AccountController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView Registration(User user){
 
+        //TODO: If user exists already, don't save a user.
         userService.saveUser(user);
         ModelAndView mw = new ModelAndView("account/registration");
         return mw;

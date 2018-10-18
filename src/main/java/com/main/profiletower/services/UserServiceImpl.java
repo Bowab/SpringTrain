@@ -37,15 +37,24 @@ public class UserServiceImpl implements UserService {
     //Use to check if username is taken.
     @Override
     public User findUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+
+        return userRepository.findFirstByUsername(username);
     }
 
     @Override
+    public User findUserById(Long id) {
+        return userRepository.findDistinctById(id);
+    }
+
+
+    @Override
     public void saveUser(User user) {
+
+        //TODO: Check if username is taken.
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByRole("REGULAR");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));//TODO:Check wtf this is, breakpoint?
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 }

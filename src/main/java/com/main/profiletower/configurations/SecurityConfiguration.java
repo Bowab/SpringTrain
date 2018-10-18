@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // *//
 
 
-    //TODO:In application.properties you need to changes the query to select username instead of email
+
     @Value("${spring.queries.users-query}")
     private String usersQuery;
 
