@@ -28,9 +28,6 @@ public class HomeController {
     @Autowired
     private MessageService messageService;
 
-    //Delete this
-    @Autowired
-    private MessageService messageService2;
 
     @Autowired
     private UserService userService;
