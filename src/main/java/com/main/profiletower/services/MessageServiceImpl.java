@@ -27,16 +27,13 @@ public class MessageServiceImpl implements MessageService {
     private InboxRowRepository inboxRowRepository;
 
 
-
     @Override
     public List<Message> findUsersMessages(long userId) {
 
-
-
         //1. Find the right inbox
-       Inbox thisInbox = findInboxByUserId(userId);
+        Inbox thisInbox = findInboxByUserId(userId);
 
-       //2. Find all inbox_rows associated with that inbox
+        //2. Find all inbox_rows associated with that inbox
         List<InboxRow> inboxRowList = findInboxRows(thisInbox.getId());
 
         //3. Find all messages involved with the inboxRows

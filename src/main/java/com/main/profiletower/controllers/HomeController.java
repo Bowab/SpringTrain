@@ -35,15 +35,35 @@ public class HomeController {
     @Autowired
     private ImageService imageService;
 
+    public User getUserObject(){
+
+        User user = new User();
+
+        //Get logged in user username
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        //Find user by username and get user id.
+        user = userService.findUserByUsername(username);
+
+        return user;
+    }
+
     @RequestMapping(value = "/viewInbox", method = RequestMethod.GET)
     public ModelAndView viewInbox(){
 
         ModelAndView mw = new ModelAndView("home/viewInbox");
-        //TODO: Find a real id and not a hardcoded one.
-        mw.addObject("messageList", messageService.findUsersMessages(2));
+
+        User user = getUserObject();
+
+        Long userId = user.getId();
+
+        mw.addObject("messageList", messageService.findUsersMessages(userId));
         return mw;
     }
 
+
+    //TODO: Remove this in the future, make use of getUserObject function.
     @RequestMapping(value = "/userIdDisplay", method = RequestMethod.GET)
     public ModelAndView userIdDisplay(){
 
