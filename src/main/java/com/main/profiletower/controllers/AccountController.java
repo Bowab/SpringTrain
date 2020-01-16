@@ -28,6 +28,7 @@ public class AccountController {
         //TODO: If user exists already, don't save a user.
         userService.saveUser(user);
         ModelAndView mw = new ModelAndView("account/registration");
+
         return mw;
     }
 

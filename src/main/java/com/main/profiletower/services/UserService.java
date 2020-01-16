@@ -8,4 +8,5 @@ public interface UserService {
     public User findUserByUsername(String username);
     public User findUserById(Long id);
     public void saveUser(User user);
+    public  Iterable<User> findAll();
 }

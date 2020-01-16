@@ -16,6 +16,7 @@ public class User {
 	
 	
     @NotEmpty
+	@Column(name="username")
 	private String username;
 	
 	
