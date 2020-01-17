@@ -17,6 +17,11 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/layout")
+    public  String layout(){
+        return "layout";
+    }
+
     @RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
     public ModelAndView index(){
 

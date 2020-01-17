@@ -35,6 +35,11 @@ public class HomeController {
     @Autowired
     private ImageService imageService;
 
+    @RequestMapping("/layout")
+    public  String layout(){
+        return "layout";
+    }
+
     public User getUserObject(){
 
         User user = new User();
